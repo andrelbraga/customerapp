@@ -4,6 +4,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
+const mongoose = require('mongoose');
+
+
+//Conect bd
+mongoose.connect('mongodb://sys:sysadmin@ds046867.mlab.com:46867/customerapp');
 
 //Export routes
 const index = require('../src/routes/index');
