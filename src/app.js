@@ -9,10 +9,10 @@ const app = express();
 const index = require('../src/routes/index');
 const user = require('../src/routes/user');
 const oauth = require('../src/routes/oauth');
-const historic = require('../src/routes/historics');
-const report = require('../src/routes/reports');
-const call = require('../src/routes/calls');
-const customer = require('../src/routes/customers');
+const historic = require('../src/routes/historic');
+const report = require('../src/routes/report');
+const call = require('../src/routes/call');
+const customer = require('../src/routes/customer');
 
 
 //Config bodyParser

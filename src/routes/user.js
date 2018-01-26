@@ -2,12 +2,13 @@
 
 const express = require('express');
 const router = express.Router();
+const controller = require('../controllers/user');
 
-router.get('/', (req, res, nex) => {
-    res.status(200).send({
-        title: "User"
-    });
-});
+router.get('/:id', controller.getId);
+router.get('/', controller.getId);
+router.post('/', controller.post);
+router.put('/:id', controller.put);
+router.delete('/:id', controller.put);
 
 
 module.exports = router;
