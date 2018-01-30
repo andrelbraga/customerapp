@@ -1,4 +1,7 @@
-'use strict'
+'use strict';
+
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
 
 exports.getId = (req, res, next) => {
     res.status(200).send({
@@ -8,16 +11,37 @@ exports.getId = (req, res, next) => {
 }
 
 exports.get = (req, res, next) => {
-    res.status(200).send({
-        title: "Get Users"
-    });
+    
+    try {
+        User
+            .find({})
+                .then((success)=>{
+                    res.status(200).send({ data: success });
+                }).catch((error)=>{
+                    res.status(200).send({ message: "Error", data: error });
+                });
+    } catch (error) {
+        
+    }
 }
 
 exports.post = (req, res, next) => {
-    res.status(200).send({
-        title: "Node API",
-        version: "0.0.1"
-    });
+    var user = new User(req.body);
+    
+    try {
+        user
+            .save()
+                .then(x =>{
+                     res.status(200).send({ message: "Saved" });
+                }).catch(e =>{
+                     res.status(400).send({ message: "Error", data: e });
+                 });
+
+    } catch (error) {
+        res.status(400).send({ message: "Error", data: error });
+    }
+  
+    
 }
 
 exports.put = (req, res, next) => {

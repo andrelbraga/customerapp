@@ -1,23 +1,25 @@
 'use strict'
-
+//Init requires
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 const mongoose = require('mongoose');
 
+//Load Models
+const User = require('./models/user');
 
-//Conect bd
+//ConectionString bd
 mongoose.connect('mongodb://sys:sysadmin@ds046867.mlab.com:46867/customerapp');
 
 //Export routes
-const index = require('../src/routes/index');
-const user = require('../src/routes/user');
-const oauth = require('../src/routes/oauth');
-const historic = require('../src/routes/historic');
-const report = require('../src/routes/report');
-const call = require('../src/routes/call');
-const customer = require('../src/routes/customer');
+const index = require('./routes/index');
+const user = require('./routes/user');
+const oauth = require('./routes/oauth');
+const historic = require('./routes/historic');
+const report = require('./routes/report');
+const call = require('./routes/call');
+const customer = require('./routes/customer');
 
 
 //Config bodyParser
